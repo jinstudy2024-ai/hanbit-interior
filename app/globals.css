@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #2D6A4F;
+}
+
+html, body {
+  font-family: 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background-color: #F2F7F4;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-brand px-4 py-2
+           text-sm font-semibold text-white shadow-sm transition
+           hover:bg-brand-600 active:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-gray-300
+           bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm
+           hover:bg-gray-50 disabled:opacity-50;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center rounded-md bg-confidence-low/90 px-4 py-2
+           text-sm font-semibold text-white shadow-sm hover:bg-confidence-low;
+  }
+  .card {
+    @apply rounded-lg border border-gray-200 bg-white p-5 shadow-sm;
+  }
+  .input {
+    @apply block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm
+           shadow-sm placeholder:text-gray-400 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand;
+  }
+  .label {
+    @apply mb-1 block text-sm font-medium text-gray-700;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .table-base {
+    @apply min-w-full divide-y divide-gray-200 text-sm;
+  }
+  .table-base th {
+    @apply bg-gray-50 px-4 py-2 text-left font-semibold text-gray-600;
+  }
+  .table-base td {
+    @apply whitespace-nowrap px-4 py-2 text-gray-800;
+  }
+  .table-base tbody tr:hover {
+    @apply bg-brand-50/50;
+  }
+}
