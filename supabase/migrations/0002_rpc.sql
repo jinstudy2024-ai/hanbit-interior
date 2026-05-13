@@ -203,13 +203,14 @@ as $$
       ) sum2 on sum2.site_id = s.id
     ),
     'by_category', (
-      select jsonb_object_agg(
-        coalesce(category, '미분류'),
-        sum(total)
-      )
-      from hanbit.receipts
-      where date_part('year', date)  = p_year
-        and date_part('month', date) = p_month
+      select jsonb_object_agg(cat, amt)
+      from (
+        select coalesce(category, '미분류') as cat, sum(total) as amt
+          from hanbit.receipts
+         where date_part('year', date)  = p_year
+           and date_part('month', date) = p_month
+         group by category
+      ) t
     )
   )
   from hanbit.receipts r

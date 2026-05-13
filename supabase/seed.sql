@@ -56,21 +56,21 @@ on conflict (id) do update
 
 -- auth.identities (이메일 로그인 연동)
 insert into auth.identities (
-  id, user_id, identity_data, provider,
+  id, user_id, identity_data, provider, provider_id,
   created_at, updated_at, last_sign_in_at
 ) values
   (gen_random_uuid(),
    'b0000000-0000-0000-0000-000000000001',
    '{"sub":"b0000000-0000-0000-0000-000000000001","email":"boss@hanbit.co.kr"}',
-   'email', now(), now(), now()),
+   'email', 'boss@hanbit.co.kr', now(), now(), now()),
   (gen_random_uuid(),
    'b0000000-0000-0000-0000-000000000002',
    '{"sub":"b0000000-0000-0000-0000-000000000002","email":"team@hanbit.co.kr"}',
-   'email', now(), now(), now()),
+   'email', 'team@hanbit.co.kr', now(), now(), now()),
   (gen_random_uuid(),
    'b0000000-0000-0000-0000-000000000003',
    '{"sub":"b0000000-0000-0000-0000-000000000003","email":"tax@hanbit.co.kr"}',
-   'email', now(), now(), now())
+   'email', 'tax@hanbit.co.kr', now(), now(), now())
 on conflict do nothing;
 
 -- ============================================================
